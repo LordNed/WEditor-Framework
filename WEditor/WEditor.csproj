@@ -50,7 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Bounds.cs" />
     <Compile Include="Core\Display.cs" />
+    <Compile Include="Core\ECS\BaseComponent.cs" />
+    <Compile Include="Core\ECS\EditorAttributes.cs" />
+    <Compile Include="Core\ECS\EntitySystem.cs" />
+    <Compile Include="Core\ECS\WEditorObject.cs" />
     <Compile Include="Core\EditorCore.cs" />
     <Compile Include="Core\EditorCoreInput.cs" />
     <Compile Include="Core\Input.cs" />
@@ -63,6 +68,7 @@
     <Compile Include="Rendering\BaseRenderer.cs" />
     <Compile Include="Rendering\Camera.cs" />
     <Compile Include="Core\Time.cs" />
+    <Compile Include="Rendering\Mesh.cs" />
     <Compile Include="Rendering\MeshRenderer.cs" />
     <Compile Include="Rendering\RenderSystem.cs" />
     <Compile Include="Rendering\Shader.cs" />

@@ -50,6 +50,11 @@ namespace TestEditor
                     Input.MousePosition.X, Input.MousePosition.Y, Input.MouseDelta.X, Input.MouseDelta.Y);
             };
             t1.Enabled = true;
+
+
+            // Test bed.
+            WEditorObject newObj = new WEditorObject();
+            newObj.Name = "Some Object";
         }
 
         private void HandleViewportResize(object sender, EventArgs e)

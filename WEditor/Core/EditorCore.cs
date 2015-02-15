@@ -19,6 +19,8 @@ namespace WEditor
         private List<Camera> m_cameraList;
         /// <summary> RenderSystem handles the rendering of objects, materials, shaders, etc. </summary>
         private RenderSystem m_renderSystem;
+        /// <summary> EntitySystem handles <see cref="WEditorObject"/> and the rest of the ECS system. </summary>
+        private EntitySystem m_entitySystem;
 
         public EditorCore(int viewportWidth, int viewportHeight)
         {
@@ -26,6 +28,7 @@ namespace WEditor
             m_dtStopWatch = new Stopwatch();
             m_cameraList = new List<Camera>();
             m_renderSystem = new RenderSystem();
+            m_entitySystem = new EntitySystem();
 
             // Set up the default Viewport Width/Height
             Display.Internal_EventResize(viewportWidth, viewportHeight);
@@ -50,6 +53,9 @@ namespace WEditor
 
             // Calculate the input for this frame (calculates button press/release, mouse press/release, input delta, etc.)
             Input.Internal_UpdateInputState();
+
+            // Process all WEditorObject and Components before we render.
+            m_entitySystem.ProcessFrame();
 
             // Render things.
             GL.Enable(EnableCap.ScissorTest);
@@ -77,6 +83,11 @@ namespace WEditor
         internal void RegisterCamera(Camera cam)
         {
             m_cameraList.Add(cam);
+        }
+
+        internal void RegisterEditorObject(WEditorObject obj)
+        {
+            m_entitySystem.RegisterEditorObject(obj);
         }
     }
 }
