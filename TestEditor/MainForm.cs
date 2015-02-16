@@ -59,9 +59,8 @@ namespace TestEditor
             WEditorObject testCube3 = WEditor.Utilities.Primitives.CreateCube(new Vector3(5, 5, 5));
             testCube3.Transform.Position = new Vector3(0, 12, 0);
 
-            Console.WriteLine("Uz: {0}", Vector3.UnitZ);
-
-        }
+            WEditor.Rendering.DebugRenderer.DrawLine(Vector3.Zero, new Vector3(0, 25, 0), 25f);
+        }   
 
         private void HandleViewportResize(object sender, EventArgs e)
         {

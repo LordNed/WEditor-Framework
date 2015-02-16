@@ -34,7 +34,7 @@ namespace WEditor.Rendering
                 m_rect.Y = MathE.Clamp(value.Y, 0, 1);
 
                 //Update the Projection matrix.
-                ProjMatrix = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(FieldOfView), AspectRatio, NearClipPlane, FarClipPlane);
+                ProjMatrix = Matrix4.CreateScale(-1f, 1f, 1f) * Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(FieldOfView), AspectRatio, NearClipPlane, FarClipPlane);
             }
         }
         /// <summary> Where on screen the camera is rendered (in normalized coordinates) </summary>

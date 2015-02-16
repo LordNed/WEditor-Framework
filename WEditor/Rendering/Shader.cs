@@ -18,5 +18,6 @@ namespace WEditor.Rendering
         public string Name;
         public int ProgramId;
         public int UniformMVP;
+        public int UniformColor;
     }
 }

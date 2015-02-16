@@ -73,6 +73,7 @@
     <Compile Include="Rendering\Camera.cs" />
     <Compile Include="Core\Time.cs" />
     <Compile Include="Core\ECS\Mesh.cs" />
+    <Compile Include="Rendering\DebugRenderer.cs" />
     <Compile Include="Rendering\StaticMeshRenderer.cs" />
     <Compile Include="Rendering\RenderSystem.cs" />
     <Compile Include="Rendering\Shader.cs" />
@@ -94,6 +95,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Shaders\DebugDraw.frag">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Shaders\DebugDraw.vert">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Shaders\UnlitTexture.frag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

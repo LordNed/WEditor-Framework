@@ -18,11 +18,19 @@ namespace WEditor.Rendering
             renderer.Initialize();
         }
 
-        public void RenderAllForCamera(Camera camera)
+        internal void RenderAllForCamera(Camera camera)
         {
             foreach(var renderType in m_renderableList)
             {
                 renderType.Render(camera);
+            }
+        }
+
+        internal void PostRenderUpdate()
+        {
+            foreach (var renderType in m_renderableList)
+            {
+                renderType.PostRenderUpdate();
             }
         }
     }

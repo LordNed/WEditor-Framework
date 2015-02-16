@@ -42,6 +42,7 @@ namespace WEditor
 
             // Create our default mesh renderer
             m_renderSystem.RegisterRenderer(new StaticMeshRenderer());
+            m_renderSystem.RegisterRenderer(new DebugRenderer());
 
             Console.WriteLine("[WEditor.Core] Initialized.");
         }
@@ -75,6 +76,7 @@ namespace WEditor
             }
             GL.Disable(EnableCap.ScissorTest);
 
+            m_renderSystem.PostRenderUpdate();
 
             // Calculate the input for this frame (calculates button press/release, mouse press/release, input delta, etc.)
             Input.Internal_UpdateInputState();

@@ -5,7 +5,7 @@ using System;
 
 namespace WEditor
 {
-    public class Mesh : BaseComponent
+    public class Mesh : BaseComponent, IDisposable
     {
         /// <summary> The bounding volume of the mesh. This is an axis-aligned bounding box in local space. Setting Verticies will automatically update the Bounds. (Read Only) </summary>
         public Bounds Bounds { get; private set; }
@@ -104,7 +104,6 @@ namespace WEditor
             if (m_meshVerts == null || m_meshTriangles == null || VertexCount == 0)
                 return;
 
-
             if (m_glVbo != -1)
                 GL.DeleteBuffer(m_glVbo);
             if (m_glEbo != -1)
@@ -117,6 +116,14 @@ namespace WEditor
             GL.GenBuffers(1, out m_glEbo);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, m_glEbo);
             GL.BufferData(BufferTarget.ElementArrayBuffer, (IntPtr)(m_meshTriangles.Length * 4), m_meshTriangles, BufferUsageHint.StaticDraw);
+        }
+
+        public void Dispose()
+        {
+            if (m_glVbo != -1)
+                GL.DeleteBuffer(m_glVbo);
+            if (m_glEbo != -1)
+                GL.DeleteBuffer(m_glEbo);
         }
     }
 }
