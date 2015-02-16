@@ -4,6 +4,29 @@ namespace WEditor
 {
     public static class MathE
     {
+        public static Vector3 MultiplyTest(this Quaternion quat, Vector3 vec)
+        {
+            float num = quat.X * 2f;
+            float num2 = quat.Y * 2f;
+            float num3 = quat.Z * 2f;
+            float num4 = quat.X * num;
+            float num5 = quat.Y * num2;
+            float num6 = quat.Z * num3;
+            float num7 = quat.X * num2;
+            float num8 = quat.X * num3;
+            float num9 = quat.Y * num3;
+            float num10 = quat.W * num;
+            float num11 = quat.W * num2;
+            float num12 = quat.W * num3;
+
+            Vector3 result;
+            result.X = (1f - (num5 + num6)) * vec.X + (num7 - num12) * vec.Y + (num8 + num11) * vec.Z;
+            result.Y = (num7 + num12) * vec.X + (1f - (num4 + num6)) * vec.Y + (num9 - num10) * vec.Z;
+            result.Z = (num8 - num11) * vec.X + (num9 + num10) * vec.Y + (1f - (num4 + num5)) * vec.Z;
+            return result;
+        }
+
+
         /// <summary>
         /// Honestly at this point I don't even understand it. Just use this to get a unit axis direction relative to the quaternion.
         /// </summary>
@@ -17,8 +40,10 @@ namespace WEditor
 
             vectorQuat = new Quaternion(vec.X, vec.Y, vec.Z, 0f);
             inverseQuat = value.Invert_Custom();
-            resultQuat = vectorQuat * inverseQuat;
+            //resultQuat = vectorQuat * inverseQuat;
+            resultQuat = inverseQuat * vectorQuat;
             resultQuat = value * resultQuat;
+            //resultQuat = resultQuat * value;
 
             resultVector = new Vector3(resultQuat.X, resultQuat.Y, resultQuat.Z);
             return resultVector;
