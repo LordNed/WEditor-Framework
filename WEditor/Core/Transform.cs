@@ -2,9 +2,9 @@
 
 namespace WEditor
 {
-    public class Transform 
+    public class Transform : BaseComponent
     {
-        public Transform()
+        public override void Initialize()
         {
             Position = Vector3.Zero;
             Rotation = Quaternion.Identity;

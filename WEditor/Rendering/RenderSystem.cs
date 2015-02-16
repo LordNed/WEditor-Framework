@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace WEditor.Rendering
 {
-    public class RenderSystem
+    public class RenderSystem : InternalSingleton<RenderSystem>
     {
-        public List<BaseRenderer> m_renderableList;
+        private List<BaseRenderer> m_renderableList;
 
         public RenderSystem()
         {

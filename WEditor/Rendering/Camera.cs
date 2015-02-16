@@ -3,12 +3,12 @@ using System.Drawing;
 
 namespace WEditor.Rendering
 {
-    public class Camera : Transform
+    public class Camera : BaseComponent
     {
         /// <summary> The near clipping plane distance. </summary>
-        public float NearClipPlane = 250f;
+        public float NearClipPlane = 1f;
         /// <summary> The far clipping plane distance. </summary>
-        public float FarClipPlane = 45000f;
+        public float FarClipPlane = 500f;
         /// <summary> Vertical field of view in degrees. </summary>
         public float FieldOfView = 45f;
         /// <summary> Viewport width/height. Read only. </summary>
@@ -62,7 +62,7 @@ namespace WEditor.Rendering
         {
             get
             {
-                return Matrix4.LookAt(Position, Position + Forward, Vector3.UnitY);
+                return Matrix4.LookAt(GetTransform().Position, GetTransform().Position + GetTransform().Forward, Vector3.UnitY);
             }
         }
 
@@ -72,7 +72,7 @@ namespace WEditor.Rendering
         /// <summary> Backing field for normalized viewport rect. </summary>
         private Rect m_rect;
 
-        public Camera()
+        public override void Initialize()
         {
             Rect = new Rect(0f, 0f, 1f, 1f);
             ClearColor = Color.ForestGreen;

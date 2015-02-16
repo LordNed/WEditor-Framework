@@ -55,6 +55,7 @@
     <Compile Include="Core\ECS\BaseComponent.cs" />
     <Compile Include="Core\ECS\EditorAttributes.cs" />
     <Compile Include="Core\ECS\EntitySystem.cs" />
+    <Compile Include="Core\ECS\MeshRenderer.cs" />
     <Compile Include="Core\ECS\WEditorObject.cs" />
     <Compile Include="Core\EditorCore.cs" />
     <Compile Include="Core\EditorCoreInput.cs" />
@@ -64,12 +65,13 @@
     <Compile Include="Core\Ray.cs" />
     <Compile Include="Core\Rectangle.cs" />
     <Compile Include="Core\Transform.cs" />
+    <Compile Include="Core\Utilities\Primitives.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\BaseRenderer.cs" />
     <Compile Include="Rendering\Camera.cs" />
     <Compile Include="Core\Time.cs" />
-    <Compile Include="Rendering\Mesh.cs" />
-    <Compile Include="Rendering\MeshRenderer.cs" />
+    <Compile Include="Core\ECS\Mesh.cs" />
+    <Compile Include="Rendering\StaticMeshRenderer.cs" />
     <Compile Include="Rendering\RenderSystem.cs" />
     <Compile Include="Rendering\Shader.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

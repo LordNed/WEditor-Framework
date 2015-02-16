@@ -34,9 +34,13 @@ namespace WEditor
             Display.Internal_EventResize(viewportWidth, viewportHeight);
 
             // Create a default camera
-            var test = new Camera();
-            test.PixelRect = new Rect(0, 0, 512, 512);
-            RegisterCamera(test);
+            WEditorObject defaultCamera = new WEditorObject();
+            defaultCamera.Name = "EditorCamera";
+            defaultCamera.Transform.Position = new OpenTK.Vector3(0, 0, 50);
+            defaultCamera.AddComponent<Camera>();
+
+            // Create our default mesh renderer
+            m_renderSystem.RegisterRenderer(new StaticMeshRenderer());
 
             Console.WriteLine("[WEditor.Core] Initialized.");
         }

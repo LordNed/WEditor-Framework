@@ -53,8 +53,8 @@ namespace TestEditor
 
 
             // Test bed.
-            WEditorObject newObj = new WEditorObject();
-            newObj.Name = "Some Object";
+            WEditorObject testCube = WEditor.Utilities.Primitives.CreateCube(new Vector3(5, 5, 5));
+            testCube.Name = "Test Cube";
         }
 
         private void HandleViewportResize(object sender, EventArgs e)

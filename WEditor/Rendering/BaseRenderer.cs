@@ -30,9 +30,9 @@ namespace WEditor.Rendering
                 int compileStatus;
                 GL.GetShader(address, ShaderParameter.CompileStatus, out compileStatus);
 
-                if(compileStatus == 0)
+                if(compileStatus != 1)
                 {
-                    Console.WriteLine("[WEditor.Core] Failed to compile shader. Log:\n{0}", GL.GetShaderInfoLog(address));
+                    Console.WriteLine("[WEditor.Core] Failed to compile shader {0}. Log:\n{1}", fileName, GL.GetShaderInfoLog(address));
                 }
             }
             catch (Exception ex)

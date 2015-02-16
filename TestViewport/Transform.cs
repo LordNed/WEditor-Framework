@@ -23,7 +23,7 @@ namespace WindViewer.Editor
         {
             Position = Vector3.Zero;
             Rotation = Quaternion.Identity;
-            Rotate(Up, 180f);
+            //Rotate(Up, 180f);
             Scale = Vector3.One;
         }
 

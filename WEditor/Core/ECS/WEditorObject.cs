@@ -6,6 +6,7 @@ namespace WEditor
     public class WEditorObject
     {
         public string Name;
+        public Transform Transform { get; private set; }
 
         private List<BaseComponent> m_componentList;
 
@@ -13,6 +14,7 @@ namespace WEditor
         {
             m_componentList = new List<BaseComponent>();
             Name = "WEditorObject";
+            Transform = AddComponent<Transform>();
 
             EditorCore.Instance.RegisterEditorObject(this);
         }
@@ -24,7 +26,8 @@ namespace WEditor
             // assign the WEditorObject that the component belongs to via the constructor
             // and allowing normal get/private set to work, without doing some other weird
             // hacks.
-            T newInst = (T)Activator.CreateInstance(typeof(T), this);
+            T newInst = new T();
+            newInst.EditorObject = this;
 
             // Now that we've created it, we're going to add it to our internal list of components.
             m_componentList.Add(newInst);
@@ -57,6 +60,7 @@ namespace WEditor
                 }
             }
 
+            newInst.Initialize();
             return newInst;
         }
 
@@ -69,7 +73,7 @@ namespace WEditor
         /// <param name="type">Type of a BaseComponent to add.</param>
         private void AddComponentUnsafe(Type type)
         {
-            if(!(type == typeof(BaseComponent)))
+            if(!type.IsSubclassOf(typeof(BaseComponent)))
             {
                 throw new ArgumentException("[WEditor.Core] Tried to AddComponent by type with a Type not derived from BaseComponent!", "type");
             }
@@ -77,13 +81,14 @@ namespace WEditor
             BaseComponent newInst = (BaseComponent)Activator.CreateInstance(type);
             m_componentList.Add(newInst);
 
+            newInst.Initialize();
         }
         public T GetComponent<T>() where T : BaseComponent
         {
             Type typeCache = typeof(T);
             for(int i = 0; i < m_componentList.Count; i++)
             {
-                if (m_componentList.GetType() == typeCache)
+                if (m_componentList[i].GetType() == typeCache)
                     return (T)m_componentList[i];
             }
 
