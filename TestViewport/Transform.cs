@@ -4,26 +4,10 @@ namespace WindViewer.Editor
 {
     public class Transform 
     {
-        #region EXPERIMENT_LATER
-        /*private Matrix4 _transformMatrix;
-
-        public Vector3 Position
-        {
-            get { return _transformMatrix.ExtractTranslation(); }
-            set
-            {
-                _transformMatrix.Row3.X = value.X;
-                _transformMatrix.Row3.Y = value.Y;
-                _transformMatrix.Row3.Z = value.Z;
-            }
-        }*/
-        #endregion
-
         public Transform()
         {
             Position = Vector3.Zero;
             Rotation = Quaternion.Identity;
-            //Rotate(Up, 180f);
             Scale = Vector3.One;
         }
 

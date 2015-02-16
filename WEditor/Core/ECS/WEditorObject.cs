@@ -60,6 +60,7 @@ namespace WEditor
                 }
             }
 
+            EditorCore.Instance.RegisterComponent(newInst);
             newInst.Initialize();
             return newInst;
         }
@@ -81,6 +82,7 @@ namespace WEditor
             BaseComponent newInst = (BaseComponent)Activator.CreateInstance(type);
             m_componentList.Add(newInst);
 
+            EditorCore.Instance.RegisterComponent(newInst);
             newInst.Initialize();
         }
         public T GetComponent<T>() where T : BaseComponent

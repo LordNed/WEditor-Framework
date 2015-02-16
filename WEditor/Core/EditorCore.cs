@@ -38,6 +38,7 @@ namespace WEditor
             defaultCamera.Name = "EditorCamera";
             defaultCamera.Transform.Position = new OpenTK.Vector3(0, 0, 50);
             defaultCamera.AddComponent<Camera>();
+            defaultCamera.AddComponent<FPSCameraMovement>();
 
             // Create our default mesh renderer
             m_renderSystem.RegisterRenderer(new StaticMeshRenderer());
@@ -92,6 +93,11 @@ namespace WEditor
         internal void RegisterEditorObject(WEditorObject obj)
         {
             m_entitySystem.RegisterEditorObject(obj);
+        }
+
+        internal void RegisterComponent(BaseComponent component)
+        {
+            m_entitySystem.RegisterComponent(component);
         }
     }
 }

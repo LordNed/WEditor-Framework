@@ -52,10 +52,12 @@
   <ItemGroup>
     <Compile Include="Core\Bounds.cs" />
     <Compile Include="Core\Display.cs" />
-    <Compile Include="Core\ECS\BaseComponent.cs" />
+    <Compile Include="Core\ECS\Components\BaseComponent.cs" />
+    <Compile Include="Core\ECS\Components\FPSCameraMovement.cs" />
     <Compile Include="Core\ECS\EditorAttributes.cs" />
+    <Compile Include="Core\ECS\EntityInterfaces.cs" />
     <Compile Include="Core\ECS\EntitySystem.cs" />
-    <Compile Include="Core\ECS\MeshRenderer.cs" />
+    <Compile Include="Core\ECS\Components\MeshRenderer.cs" />
     <Compile Include="Core\ECS\WEditorObject.cs" />
     <Compile Include="Core\EditorCore.cs" />
     <Compile Include="Core\EditorCoreInput.cs" />
