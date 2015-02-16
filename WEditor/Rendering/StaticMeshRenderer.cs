@@ -65,7 +65,7 @@ namespace WEditor.Rendering
             GL.Enable(EnableCap.DepthTest);
             //GL.Disable(EnableCap.CullFace);
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0); // Clear any previously bound buffer.
-            Matrix4 viewProjMatrix = camera.ViewMatrix * camera.ProjMatrix;
+            Matrix4 viewProjMatrix = camera.ViewMatrix * (Matrix4.CreateScale(-1f, 1f, 1f) * camera.ProjMatrix);
 
             for(int i = 0; i < m_meshList.Count; i++)
             {

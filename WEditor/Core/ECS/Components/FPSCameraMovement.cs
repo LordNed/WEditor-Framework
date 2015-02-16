@@ -12,11 +12,11 @@ namespace WEditor
             Vector3 moveDir = Vector3.Zero;
             if(Input.GetKey(System.Windows.Forms.Keys.W))
             {
-                moveDir -= Vector3.UnitZ;
+                moveDir += Vector3.UnitZ;
             }
             if(Input.GetKey(System.Windows.Forms.Keys.S))
             {
-                moveDir += Vector3.UnitZ;
+                moveDir -= Vector3.UnitZ;
             }
             if(Input.GetKey(System.Windows.Forms.Keys.D))
             {
@@ -38,12 +38,11 @@ namespace WEditor
 
             float moveSpeed = Input.GetKey(System.Windows.Forms.Keys.ShiftKey) ? MoveSpeed * 2f : MoveSpeed;
 
-
             // Normalize the move direction
             moveDir.NormalizeFast();
 
             // Make it relative to the current rotation.
-            moveDir = GetTransform().Rotation.MultiplyTest(moveDir);
+            moveDir = GetTransform().Rotation.Multiply(moveDir);
 
             GetTransform().Position += Vector3.Multiply(moveDir, moveSpeed * Time.DeltaTime);
 
@@ -52,15 +51,15 @@ namespace WEditor
 
         private void Rotate(float x, float y)
         {
-            GetTransform().Rotate(Vector3.UnitY, -x * Time.DeltaTime);
-            GetTransform().Rotate(GetTransform().Right, -y * Time.DeltaTime);
+            GetTransform().Rotate(Vector3.UnitY, x * Time.DeltaTime);
+            GetTransform().Rotate(GetTransform().Right, y * Time.DeltaTime);
 
             // Clamp them from looking over the top point.
-            //Vector3 up = Vector3.Cross(GetTransform().Forward, GetTransform().Right);
-            //if(Vector3.Dot(up, Vector3.UnitY) < 0.01f)
-            //{
-            //    GetTransform().Rotate(GetTransform().Right, -y * Time.DeltaTime);
-            //}
+            Vector3 up = Vector3.Cross(GetTransform().Forward, GetTransform().Right);
+            if(Vector3.Dot(up, Vector3.UnitY) < 0.01f)
+            {
+                GetTransform().Rotate(GetTransform().Right, -y * Time.DeltaTime);
+            }
         }
     }
 }

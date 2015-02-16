@@ -36,7 +36,7 @@ namespace WEditor
             // Create a default camera
             WEditorObject defaultCamera = new WEditorObject();
             defaultCamera.Name = "EditorCamera";
-            defaultCamera.Transform.Position = new OpenTK.Vector3(0, 0, 50);
+            defaultCamera.Transform.Position = new OpenTK.Vector3(0, 0, -50);
             defaultCamera.AddComponent<Camera>();
             defaultCamera.AddComponent<FPSCameraMovement>();
 
@@ -56,9 +56,6 @@ namespace WEditor
             Time.Internal_UpdateTime(m_dtStopWatch.ElapsedMilliseconds / 1000f);
             m_dtStopWatch.Restart();
 
-            // Calculate the input for this frame (calculates button press/release, mouse press/release, input delta, etc.)
-            Input.Internal_UpdateInputState();
-
             // Process all WEditorObject and Components before we render.
             m_entitySystem.ProcessFrame();
 
@@ -77,6 +74,10 @@ namespace WEditor
                 m_renderSystem.RenderAllForCamera(camera);
             }
             GL.Disable(EnableCap.ScissorTest);
+
+
+            // Calculate the input for this frame (calculates button press/release, mouse press/release, input delta, etc.)
+            Input.Internal_UpdateInputState();
         }
 
         public void ViewportResize(int newWidth, int newHeight)

@@ -8,7 +8,6 @@ namespace WEditor
         {
             Position = Vector3.Zero;
             Rotation = Quaternion.Identity;
-            //Rotate(Up, 180f); // I think Identity faced backwards from what I wanted?
             Scale = Vector3.One;
         }
 
@@ -18,17 +17,17 @@ namespace WEditor
 
         public Vector3 Right
         {
-            get { return Rotation.MultiplyTest(Vector3.UnitX); }
+            get { return Rotation.Multiply(Vector3.UnitX); }
         }
 
         public Vector3 Forward
         {
-            get { return Rotation.MultiplyTest(-Vector3.UnitZ); }
+            get { return Rotation.Multiply(Vector3.UnitZ); }
         }
 
         public Vector3 Up
         {
-            get { return Rotation.MultiplyTest(Vector3.UnitY); }
+            get { return Rotation.Multiply(Vector3.UnitY); }
         }
 
         public void LookAt(Vector3 worldPosition)

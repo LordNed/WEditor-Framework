@@ -4,7 +4,14 @@ namespace WEditor
 {
     public static class MathE
     {
-        public static Vector3 MultiplyTest(this Quaternion quat, Vector3 vec)
+        /// <summary>
+        /// Multiplies the rotation by the vector and returns the rotated vector. Useful for converting from
+        /// local space to world space of a Transform via Rotation.Multiply(localDirection).
+        /// </summary>
+        /// <param name="quat"></param>
+        /// <param name="vec"></param>
+        /// <returns></returns>
+        public static Vector3 Multiply(this Quaternion quat, Vector3 vec)
         {
             float num = quat.X * 2f;
             float num2 = quat.Y * 2f;
@@ -24,41 +31,6 @@ namespace WEditor
             result.Y = (num7 + num12) * vec.X + (1f - (num4 + num6)) * vec.Y + (num9 - num10) * vec.Z;
             result.Z = (num8 - num11) * vec.X + (num9 + num10) * vec.Y + (1f - (num4 + num5)) * vec.Z;
             return result;
-        }
-
-
-        /// <summary>
-        /// Honestly at this point I don't even understand it. Just use this to get a unit axis direction relative to the quaternion.
-        /// </summary>
-        /// <param name="value"></param>
-        /// <param name="vec"></param>
-        /// <returns></returns>
-        public static Vector3 Multiply(this Quaternion value, Vector3 vec)
-        {
-            Quaternion vectorQuat, inverseQuat, resultQuat;
-            Vector3 resultVector;
-
-            vectorQuat = new Quaternion(vec.X, vec.Y, vec.Z, 0f);
-            inverseQuat = value.Invert_Custom();
-            //resultQuat = vectorQuat * inverseQuat;
-            resultQuat = inverseQuat * vectorQuat;
-            resultQuat = value * resultQuat;
-            //resultQuat = resultQuat * value;
-
-            resultVector = new Vector3(resultQuat.X, resultQuat.Y, resultQuat.Z);
-            return resultVector;
-        }
-
-        public static Quaternion Invert_Custom(this Quaternion value)
-        {
-            Quaternion newQuat = new Quaternion(value.X, value.Y, value.Z, value.W);
-            float length = 1.0f / ((newQuat.X * newQuat.X) + (newQuat.Y * newQuat.Y) + (newQuat.Z * newQuat.Z) + (newQuat.W * newQuat.W));
-            newQuat.X *= -length;
-            newQuat.Y *= -length;
-            newQuat.Z *= -length;
-            newQuat.W *= length;
-
-            return newQuat;
         }
 
         public static int Clamp(int value, int minValue, int maxValue)

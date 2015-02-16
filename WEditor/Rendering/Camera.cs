@@ -62,7 +62,9 @@ namespace WEditor.Rendering
         {
             get
             {
-                return Matrix4.LookAt(GetTransform().Position, GetTransform().Position + GetTransform().Forward, Vector3.UnitY);
+                Matrix4 rhView = Matrix4.LookAt(GetTransform().Position, GetTransform().Position + GetTransform().Forward, Vector3.UnitY);
+                //return Matrix4.CreateScale(1f, 1f, -1f) * rhView;
+                return rhView;
             }
         }
 
