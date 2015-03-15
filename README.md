@@ -7,3 +7,6 @@ Consists of two projects.
 * TestEditor is an example usage of WEditor that pipes in the necessary information from a OpenTK/WinForm control.
 
 It's pretty in-progress but stands as the back-end to most of my modding tools (because I'm tired fo re-writing them) so hopefully will be of use to someone else.
+
+
+[Roadmap/ToDo/Thought Dump is available here](https://trello.com/b/kR8xde3K/weditor). It's easier to keep track of things that need to be done on a Trello than through the Github Wiki/Issue system for now.
